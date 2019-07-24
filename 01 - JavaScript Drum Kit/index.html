@@ -61,6 +61,8 @@
 
   <script>
 
+    //option no.1
+
     window.addEventListener("keydown", function (event) {
       const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
       const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
@@ -70,6 +72,14 @@
       audio.currentTime = 0;  //rewind to the start for pressing multiple times before the audio finishes.
       audio.play();
       key.classList.add("playing");
+
+      key.addEventListener("transitionend", function (event) {  //remove .playing as soon as it transitioned. 
+        if (event.propertyName !== "transform") {
+          return;  //return nothing!
+        }
+        key.classList.remove("playing");   //runs only for transform!
+      });
+
     });
 
   </script>
