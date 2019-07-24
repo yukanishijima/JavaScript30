@@ -63,7 +63,29 @@
 
     //option no.1
 
-    window.addEventListener("keydown", function (event) {
+    // window.addEventListener("keydown", function (event) {
+    //   const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    //   const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
+    //   if (!audio) {   //if returns "null", don't run the following code.
+    //     return;
+    //   }
+    //   audio.currentTime = 0;  //rewind to the start for pressing multiple times before the audio finishes.
+    //   audio.play();
+    //   key.classList.add("playing");
+
+    //   key.addEventListener("transitionend", function (event) {  //remove .playing as soon as it transitioned. 
+    //     if (event.propertyName !== "transform") {
+    //       return;  //return nothing!
+    //     }
+    //     key.classList.remove("playing");   //runs only for transform!
+    //   });
+
+    // });
+
+
+    //option no.2   
+
+    function playSound(event) {
       const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
       const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
       if (!audio) {   //if returns "null", don't run the following code.
@@ -73,14 +95,15 @@
       audio.play();
       key.classList.add("playing");
 
-      key.addEventListener("transitionend", function (event) {  //remove .playing as soon as it transitioned. 
-        if (event.propertyName !== "transform") {
-          return;  //return nothing!
-        }
+      key.addEventListener("transitionend", function removeClass(event) {  //remove .playing as soon as it transitioned. 
+        if (event.propertyName !== "transform") return;    //returns nothing!
         key.classList.remove("playing");   //runs only for transform!
       });
 
-    });
+    };
+
+    window.addEventListener("keydown", playSound);
+
 
   </script>
 
