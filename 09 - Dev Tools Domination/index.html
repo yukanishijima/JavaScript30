@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
@@ -18,29 +20,63 @@
     }
 
     // Regular
+    console.log(`Hello`);
 
     // Interpolated
+    const value = "human";
+    console.log(`Hello, I'm a ${value}.`);
+
+    console.log(`Hi, I'm a great %s.`, `human`);
 
     // Styled
+    console.log(`%c Hi, I'm some great text.`, `font-size: 30px; background: yellow;`);
 
     // warning!
+    console.warn(`OH NO!`);  //display it as a warning
 
     // Error :|
+    console.error(`OH NO!`);   //display it as an error
 
     // Info
+    console.info(`some information`);   //display it as info
 
     // Testing
+    const p = document.querySelector("p");
+    console.assert(p.classList.contains("classname"), "That's wrong!");   //display 2nd part only when 1st part is wrong
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.log(p);   //show the actual element
+    console.dir(p);   //show the DOM element
 
     // Grouping together
+    dogs.forEach(element => {
+      console.groupCollapsed(`${element.name}`);
+      console.log(`${element.name} is ${element.age} years old.`);
+      console.groupEnd(`${element.name}`);
+    });
 
     // counting
 
+    console.count("apple");
+    console.count("apple");
+    console.count("banana");
+    console.count("apple");
+    console.count("apple");
+    console.count("banana");
+
     // timing
+
+    console.time("fetching data");    //it can time the execution!
+    fetch("https://api.github.com/user/wesbos")
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd("fetching data");
+      });
 
   </script>
 </body>
+
 </html>
