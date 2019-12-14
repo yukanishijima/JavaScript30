@@ -16,7 +16,9 @@
 
 
     const recognition = new SpeechRecognition();
-    recognition.interimResults = true;  //allow user to keep speaking while being displayed.
+
+    //allow user to keep speaking while being displayed.
+    recognition.interimResults = true;
 
     let p = document.createElement("p");
     const words = document.querySelector(".words");
